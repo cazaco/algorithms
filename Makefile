@@ -1,5 +1,4 @@
 # Makefile with all options required for develop and running this software
-
 VENV=.venv
 PYTHON=${VENV}/bin/python3
 MAKE=make
@@ -29,12 +28,12 @@ refresh:
 	${PYTHON} -m pip install -r requirements.txt
 
 format:
-	${PYTHON} -m black code tests
+	${PYTHON} -m black source tests
 
 format-test:
-	${PYTHON} -m black --check code tests
+	${PYTHON} -m black --check source tests
 
 unit-test:
-	${PYTHON} -m pytest --cov=code --cov-config=.coveragerc tests
+	${PYTHON} -m pytest -v --cov=source --cov-config=.coveragerc tests
 
 full-test: setup unit-test format-test
