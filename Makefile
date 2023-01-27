@@ -36,4 +36,7 @@ format-test:
 unit-test:
 	${PYTHON} -m pytest -v --cov=source --cov-config=.coveragerc tests
 
-full-test: setup unit-test format-test
+typing-test:
+	${PYTHON} -m mypy --explicit-package-bases --check-untyped-defs source tests
+
+full-test: setup unit-test format-test typing-test
